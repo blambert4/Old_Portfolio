@@ -1,0 +1,16 @@
+@keyframes fall{
+    0%{ top: -60vh}
+    100%{top: 10vh}
+
+}
+#tv{
+     display: none;
+    -webkit-filter: invert(1);
+    filter: invert(1);
+    width: 700px;
+    height: 600px;
+    left: 10vh;
+    top: 10vh;
+    animation-name: fall;
+    animation-duration: 3s;
+}

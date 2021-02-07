@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel = "stylesheet" href = "start.css">
+        <link rel = "stylesheet" href = "falling.css">
+        <style>
+                body{
+                background-color: black;
+            }
+            
+            img{
+                position: absolute;
+                top: 45%;
+                left: 45%;
+                width: 5vw;
+                height: 10vh;
+            }
+
+            #light{
+                top: 0;
+                -webkit-filter: invert(1);
+                filter: invert(1);
+                opacity: .5;
+            }
+
+            @keyframes fadeaway{
+                0%{opacity: 1}
+                100%{opacity: 0}
+            }
+
+            #door{
+                visibility: hidden;
+                animation-name: fadeaway;
+                animation-duration: 1s;
+                animation-play-state: paused;
+                animation-timing-function: linear;
+            }
+
+            @keyframes fadein{
+                0%{opacity: 0}
+                100%{opacity: 1}
+            }
+            #gametext{
+                font-family: 'Press Start 2P', cursive;
+                position: absolute;
+                top: 50vh;
+                left: 0;
+                height: 90px;
+                color: black;
+                width: 100%;
+                text-align: center;
+                margin: auto;
+                font-size: 40px;
+                line-height: 40px;
+                letter-spacing: 5px;
+                text-shadow: -2px 0 0 #fdff2a,
+                 -4px 0 0 #df4a42,
+                    2px 0 0 #91fcfe,
+                    4px 0 0 #4405fc;
+                opacity: 0;
+                display: none;
+                animation-name: fadein;
+                animation-duration: 1s;
+                animation-play-state: paused;
+                animation-timing-function: linear;
+            }
+                
+        </style>
+    </head>
+    <body>
+        
+
+        <img onclick = "dooropen()" id = "door" src = "https://www.svgrepo.com/show/142359/double-door-closed.svg">
+
+        <img onmouseout = "lightdown()" onmouseover = "lightup()" onclick = "lightson()" id = "light" src = "https://img.icons8.com/ios/452/ceiling-light.png">
+
+        <img id = "tv" src = "https://www.vippng.com/png/detail/76-766529_television-transparent-background-tv-line-drawing-png.png">
+        
+        <div id = "gametext">Welcome My Nigga</div>
+
+
+        <script src = "start.js"> </script>
+    </body>
+</html>
