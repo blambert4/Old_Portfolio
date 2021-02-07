@@ -1,5 +1,23 @@
 var hey = document.getElementsByTagName('img');
 
+function sound(src) {
+    this.sound = document.createElement("audio");
+    this.sound.src = src;
+    this.sound.setAttribute("preload", "auto");
+    this.sound.setAttribute("controls", "none");
+    this.sound.style.display = "none";
+    document.body.appendChild(this.sound);
+    this.play = function(){
+      this.sound.play();
+    }
+    this.stop = function(){
+      this.sound.pause();
+    }
+  }
+
+var sound_lights = new sound("switch-3.mp3");
+
+//also gonna run just once to turn on light
 var lightson = (function() {
     var executed = false;
     return function() {
@@ -7,6 +25,7 @@ var lightson = (function() {
         document.body.style.backgroundColor = 'white';
         hey[0].src = "https://www.svgrepo.com/show/142359/double-door-closed.svg";
         hey[0].style.visibility = "visible";
+        sound_lights.play();
         executed = true;
     }
 };
@@ -48,6 +67,17 @@ var dooropen = (function() {
         setTimeout(()=>{
             document.getElementById("gametext").style.display = "none";
         },5000)
+        //make static fade in 
+        setTimeout(()=>{
+            document.getElementById("static").style.display = "block";
+            document.getElementById("static").style.animationPlayState = "running";
+        },6000)
+        //make static stay
+        setTimeout(()=>{
+            document.getElementById("static").style.display = "block";
+            document.getElementById("static").style.opacity = "1";
+           
+        },6000)
 
         executed = true;
     }
