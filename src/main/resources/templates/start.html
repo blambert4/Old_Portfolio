@@ -27,7 +27,14 @@
 }
             body{
     background-color: black;
-    font-family: 'Press Start 2P', cursive;
+}
+
+@font-face {
+        font-family: myAtariFont;
+        src: url('game.ttf');
+    }
+*{
+    font-family: myAtariFont;
 }
 
 img{
@@ -127,13 +134,22 @@ img{
     list-style-type: none;
     display: none;
 }
+
+#arrow{
+    -webkit-filter: invert(1);
+    filter: invert(1);
+    position: absolute;
+    top: 15px;
+    left: 10px;
+    display: none;
+}
             
         </style>
     </head>
     <body>
         
 
-        <img onclick = "dooropen()" id = "door" src = "https://www.svgrepo.com/show/142359/double-door-closed.svg">
+        <img onclick = "dooropen(), init()" id = "door" src = "https://www.svgrepo.com/show/142359/double-door-closed.svg">
 
         <img onmouseout = "lightdown()" onmouseover = "lightup()" onclick = "lightson()" id = "light" src = "https://img.icons8.com/ios/452/ceiling-light.png">
 
@@ -143,6 +159,7 @@ img{
 
         <div id = "static">
             <h1 id = "press_start"> PRESS ENTER </h1>
+            <svg id = "arrow" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M7.33 24l-2.83-2.829 9.339-9.175-9.339-9.167 2.83-2.829 12.17 11.996z"/></svg>
             <ul id = "options">
                 <li> ABOUT ME</li>
                 <br>
@@ -158,6 +175,50 @@ img{
 
 
         <script src = "start.js"> </script>
-        <script src = "middle.js"> </script>
+        <script>
+            
+            
+    var objImage= null;
+	    function init(){
+		    objImage=document.getElementById("arrow");				
+		    objImage.style.position='absolute';
+		    objImage.style.top='15px';
+        }
+	function getKeyAndMove(e){				
+		var key_code=e.which||e.keyCode;
+		switch(key_code){
+			case 38: //Up arrow key
+				moveUp();
+				break;
+			case 40: //down arrow key
+				moveDown();
+				break;						
+		}
+	}
+	function moveUp(){
+        if(objImage.style.top != "15px"){
+		    objImage.style.top=parseInt(objImage.style.top)-40 +'px';
+        }
+	}
+	function moveDown(){
+		if(objImage.style.top != "95px"){
+		    objImage.style.top=parseInt(objImage.style.top)+40 +'px';
+        }
+	}
+
+    document.onkeydown = getKeyAndMove;
+
+    document.addEventListener('keyup', event => {
+    if (event.code === 'Enter') {
+        document.getElementById("options").style.display = "block";
+        document.getElementById("press_start").style.display = "none";
+        document.getElementsByTagName('svg')[0].style.display = "block";
+                }
+    })
+            
+
+            
+
+        </script>
     </body>
 </html>
