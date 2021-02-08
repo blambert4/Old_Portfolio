@@ -7,89 +7,127 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel = "stylesheet" href = "start.css">
+        <link rel = "stylesheet" href = "keyframes.css">
         <link rel = "stylesheet" href = "falling.css">
         <style>
-                body{
-                background-color: black;
-            }
-            
-            img{
-                position: absolute;
-                top: 45%;
-                left: 45%;
-                width: 5vw;
-                height: 10vh;
-            }
-
-            #light{
-                top: 0;
-                -webkit-filter: invert(1);
-                filter: invert(1);
-                opacity: .5;
-            }
-
-            @keyframes fadeaway{
-                0%{opacity: 1}
-                100%{opacity: 0}
-            }
-
-            #door{
-                visibility: hidden;
-                animation-name: fadeaway;
-                animation-duration: 1s;
-                animation-play-state: paused;
-                animation-timing-function: linear;
-            }
-
             @keyframes fadein{
-                0%{opacity: 0}
-                100%{opacity: 1}
-            }
-            #gametext{
-                font-family: 'Press Start 2P', cursive;
-                position: absolute;
-                top: 45vh;
-                right: 2vw;
-                height: 90px;
-                color: black;
-                width: 100%;
-                text-align: center;
-                margin: auto;
-                font-size: 40px;
-                line-height: 40px;
-                letter-spacing: 5px;
-                text-shadow: -2px 0 0 #fdff2a,
-                 -4px 0 0 #df4a42,
-                    2px 0 0 #91fcfe,
-                    4px 0 0 #4405fc;
-                opacity: 0;
-                display: none;
-                animation-name: fadein;
-                animation-duration: 1s;
-                animation-play-state: paused;
-                animation-timing-function: linear;
-            }
-            .static{
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-            }
-            #static{
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                display: none;
-                opacity: 0;
-                animation-name: fadein;
-                animation-duration: 1s;
-                animation-play-state: paused;
-                animation-timing-function: linear;
-            }
-                
+    0%{opacity: 0}
+    100%{opacity: 1}
+}
+
+@keyframes fadeaway{
+    0%{opacity: 1}
+    100%{opacity: 0}
+}
+
+@keyframes blink{
+    to{
+        visibility: hidden; 
+    }
+}
+            body{
+    background-color: black;
+    font-family: 'Press Start 2P', cursive;
+}
+
+img{
+    position: absolute;
+    top: 45%;
+    left: 45%;
+    width: 5vw;
+    height: 10vh;
+}
+
+#light{
+    top: 0;
+    -webkit-filter: invert(1);
+    filter: invert(1);
+    opacity: .5;
+}
+
+
+
+#door{
+    visibility: hidden;
+    animation-name: fadeaway;
+    animation-duration: 1s;
+    animation-play-state: paused;
+    animation-timing-function: linear;
+}
+
+
+#gametext{
+    position: absolute;
+    top: 45vh;
+    right: 2vw;
+    height: 90px;
+    color: black;
+    width: 100%;
+    text-align: center;
+    margin: auto;
+    font-size: 40px;
+    line-height: 40px;
+    letter-spacing: 5px;
+    text-shadow: -2px 0 0 #fdff2a,
+     -4px 0 0 #df4a42,
+        2px 0 0 #91fcfe,
+        4px 0 0 #4405fc;
+    opacity: 0;
+    display: none;
+    animation-name: fadein;
+    animation-duration: 1s;
+    animation-play-state: paused;
+    animation-timing-function: linear;
+}
+.static{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+}
+#static{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    opacity: 0;
+    animation-name: fadein;
+    animation-duration: 1s;
+    animation-play-state: paused;
+    animation-timing-function: linear;
+}
+#press_start{
+    animation: blink 1s steps(4, start) infinite;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    height: 90px;
+    color: white;
+    width: 100%;
+    text-align: center;
+    margin: auto;
+    font-size: 40px;
+    line-height: 40px;
+    letter-spacing: 5px;
+    text-shadow: -2px 0 0 #fdff2a,
+                -4px 0 0 #df4a42,
+                2px 0 0 #91fcfe,
+                4px 0 0 #4405fc, ;
+   
+}    
+
+#options{
+    color: white;
+    list-style-type: none;
+    display: none;
+}
+            
         </style>
     </head>
     <body>
@@ -101,13 +139,25 @@
 
         <img id = "tv" src = "https://www.vippng.com/png/detail/76-766529_television-transparent-background-tv-line-drawing-png.png">
         
-        <div id = "gametext">Welcome to the show</div>
+        <div id = "gametext">MADE IN SPRINGBOOT</div>
 
         <div id = "static">
+            <h1 id = "press_start"> PRESS ENTER </h1>
+            <ul id = "options">
+                <li> ABOUT ME</li>
+                <br>
+                <li> SKILLS</li>
+                <br>
+                <li> ACCOMPLISHMENTS</li>
+            </ul>
             <img class = "static" src = "https://wallpaperaccess.com/full/42337.jpg">
         </div>
 
+            
+
+
 
         <script src = "start.js"> </script>
+        <script src = "middle.js"> </script>
     </body>
 </html>
