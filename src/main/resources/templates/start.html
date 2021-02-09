@@ -92,7 +92,7 @@ img{
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: -2;
+    z-index: -3;
 }
 #static{
     position: absolute;
@@ -143,17 +143,37 @@ img{
     left: 10px;
     display: none;
 }
+
+#infoarea{
+            width: 50%;
+            height: 70%;
+            position: absolute;
+            top: 40px;
+            right: 60px;
+            background-color: white;
+            overflow-y:auto;
+            display: none;
+            
+        }
+
+        #infoarea h1{
+            text-align: left;
+            font-size: 14px;
+        }
+        #infoarea p{
+            text-align: left;
+            font-size: 12px;
+        }
             
         </style>
     </head>
     <body>
         
 
-        <img onclick = "dooropen(), init()" id = "door" src = "https://www.svgrepo.com/show/142359/double-door-closed.svg">
+        <img onmouseover = "cursorchange()" onclick = "dooropen(), init()" id = "door" src = "https://www.svgrepo.com/show/142359/double-door-closed.svg">
 
         <img onmouseout = "lightdown()" onmouseover = "lightup()" onclick = "lightson()" id = "light" src = "https://img.icons8.com/ios/452/ceiling-light.png">
 
-        <img id = "tv" src = "https://www.vippng.com/png/detail/76-766529_television-transparent-background-tv-line-drawing-png.png">
         
         <div id = "gametext">MADE IN SPRINGBOOT</div>
 
@@ -161,12 +181,25 @@ img{
             <h1 id = "press_start"> PRESS ENTER </h1>
             <svg id = "arrow" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M7.33 24l-2.83-2.829 9.339-9.175-9.339-9.167 2.83-2.829 12.17 11.996z"/></svg>
             <ul id = "options">
-                <li> ABOUT ME</li>
+                <li onmouseover="moveToAboutMe()"> ABOUT ME</li>
                 <br>
-                <li> SKILLS</li>
+                <li onmouseover="moveToSkills()"> SKILLS</li>
                 <br>
-                <li> ACCOMPLISHMENTS</li>
+                <li onmouseover="moveToAccomplishents()"> ACCOMPLISHMENTS</li>
             </ul>
+            <div id = "infoarea">
+                <h1> Name: Bradley Lambert</h1>
+                <h1> University: CSU Dominguez Hills- class of 2018</h1>
+                <h1> Occupation: Chic Fil A Delivery Driver</h1>
+                <hr>
+                <h3> Why Programming?</h3>
+                <p>  I've always loved technology from an early age, however I never thought I could pursue a career in it. Although it fascinated me, it never occured to me that the computers and their programs were made by everyday people. I thought they were made by geniuses and so complex that i'd never learn anything of value. But I was wrong! </p>
+                <br>
+                <p> The first time i'd ever heard of computer programming was because i took a course in community college (completely by accident by the way). I didnt get it and I'm not even sure how I passed, but after that i decided it wasn't for me. However, Last year I stumbled upon a python and javascript course through EDX. I decided to give it a shot because the Covid-19 pandemic had started and I was bored. It was free but i loved it so much i purchased the extended version. I stayed up late nights and early mornings to learn and develop my skills. I started making simple websites on my local machine until the python portion made more sense and i learned how to use the MVC Django </p>
+                <br>
+                <h3> inspiration </h3>
+                <p> I'm sure you can tell by looking at this website that I was heavily inspired by some of my favorite videogames and game systems from my childhood. The first thing i ever wanted to do on my school computer was navigate to an unblocked gaming website and mess around when the teacher wasn't looking! One day i hope to create my own game or maybe contribute to a larger one. </p>
+            </div>
             <img class = "static" src = "https://wallpaperaccess.com/full/42337.jpg">
         </div>
 
@@ -176,14 +209,129 @@ img{
 
         <script src = "start.js"> </script>
         <script>
-            
-            
+    var hey = document.getElementsByTagName('img');
+
+function sound(src) {
+    this.sound = document.createElement("audio");
+    this.sound.src = src;
+    this.sound.setAttribute("preload", "auto");
+    this.sound.setAttribute("controls", "none");
+    this.sound.style.display = "none";
+    document.body.appendChild(this.sound);
+    this.play = function(){
+      this.sound.play();
+    }
+    this.stop = function(){
+      this.sound.pause();
+    }
+  }
+
+var sound_lights = new sound("switch-3.mp3");
+
+//also gonna run just once to turn on light
+var lightson = (function() {
+    var executed = false;
+    return function() {
+    if (!executed) {
+        document.body.style.backgroundColor = 'white';
+        hey[0].src = "https://www.svgrepo.com/show/142359/double-door-closed.svg";
+        hey[0].style.visibility = "visible";
+        sound_lights.play();
+        executed = true;
+    }
+};
+})();
+//gonna run this function once
+var dooropen = (function() {
+    var executed = false;
+    return function() {
+    if (!executed) {
+        //lights up room and displays door
+        hey[0].src = "https://pbs.twimg.com/media/EtjPJUmXIAI7A5g?format=png&name=240x240";
+        
+        //removes the light
+        setTimeout(()=>{
+            hey[1].style.display = "none"; 
+        },300)
+        //fades away
+        setTimeout(()=>{
+            document.getElementById("door").style.animationPlayState = "running";
+        },700)
+        //doesnt display door anymore
+        setTimeout(()=>{
+            document.getElementById("door").style.display = "none";
+            document.getElementById("gametext").style.display = "block";
+        },1600)
+        //now the text will display
+        setTimeout(()=>{
+            document.getElementById("gametext").style.animationPlayState = "running";
+        },2200)
+        //it will fade in
+        setTimeout(()=>{
+            document.getElementById("gametext").style.opacity = "1";
+        },3100)
+        //it will fadeout
+        setTimeout(()=>{
+            document.getElementById("gametext").style.animation = "fadeaway 1s";
+        },4100)
+        //it will disappear
+        setTimeout(()=>{
+            document.getElementById("gametext").style.display = "none";
+        },5000)
+        //make static fade in 
+        setTimeout(()=>{
+            document.getElementById("static").style.display = "block";
+            document.getElementById("static").style.animationPlayState = "running";
+        },6000)
+        //make static stay
+        setTimeout(()=>{
+            document.getElementById("static").style.display = "block";
+            document.getElementById("static").style.opacity = "1";
+           
+        },6000)
+
+        executed = true;
+    }
+};
+})();
+
+function lightup(){
+document.getElementById('light').style.opacity = "1";
+document.getElementById('light').style.cursor = "pointer";
+}
+
+function lightdown(){
+document.getElementById('light').style.opacity = ".7";
+document.getElementById('light').style.cursor = "default"
+}        
+    //creating an image object that relates to the arrow i want to move
+function cursorchange(){
+    document.getElementById('door').style.cursor = "pointer";
+}
     var objImage= null;
 	    function init(){
 		    objImage=document.getElementById("arrow");				
 		    objImage.style.position='absolute';
 		    objImage.style.top='15px';
         }
+
+    //runs when option is hovered over
+    function moveToAboutMe(){
+        if(objImage.style.top != "15px"){
+		    objImage.style.top="15px";
+        }
+	}    
+    function moveToSkills(){
+        if(objImage.style.top != "50px"){
+		    objImage.style.top="50px";
+        }
+	}    
+    function moveToAccomplishents(){
+        if(objImage.style.top != "95px"){
+		    objImage.style.top="95px";
+        }
+	}    
+    //runs when up or down is pressed
 	function getKeyAndMove(e){				
 		var key_code=e.which||e.keyCode;
 		switch(key_code){
@@ -195,6 +343,7 @@ img{
 				break;						
 		}
 	}
+    //moves the cursor up or down with button presses
 	function moveUp(){
         if(objImage.style.top != "15px"){
 		    objImage.style.top=parseInt(objImage.style.top)-40 +'px';
@@ -206,14 +355,17 @@ img{
         }
 	}
 
-    document.onkeydown = getKeyAndMove;
 
+
+    document.onkeydown = getKeyAndMove;
+    //this opens up the menu options
     document.addEventListener('keyup', event => {
     if (event.code === 'Enter') {
         document.getElementById("options").style.display = "block";
         document.getElementById("press_start").style.display = "none";
         document.getElementsByTagName('svg')[0].style.display = "block";
-                }
+        document.getElementById('infoarea').style.display = "block";
+        }
     })
             
 

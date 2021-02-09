@@ -10,4 +10,8 @@ public class StartController {
     public String run(){
         return "start";
     }
+    @GetMapping("/tests")
+    public String test(){
+        return "tests";
+    }
 }

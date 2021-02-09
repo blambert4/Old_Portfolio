@@ -86,8 +86,10 @@ var dooropen = (function() {
 
 function lightup(){
 document.getElementById('light').style.opacity = "1";
+document.getElementById('light').style.cursor = "pointer";
 }
 
 function lightdown(){
 document.getElementById('light').style.opacity = ".7";
+document.getElementById('light').style.cursor = "default"
 }
