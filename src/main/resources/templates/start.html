@@ -10,7 +10,7 @@
         <link rel = "stylesheet" href = "keyframes.css">
         <link rel = "stylesheet" href = "falling.css">
         <style>
-            @keyframes fadein{
+@keyframes fadein{
     0%{opacity: 0}
     100%{opacity: 1}
 }
@@ -134,7 +134,23 @@ img{
     list-style-type: none;
     display: none;
 }
-
+#sound_div img{
+    width: 30px;
+    height: 30px;
+    -webkit-filter: invert(1);
+    filter: invert(1);
+    display: inline-block;
+    
+}
+#sound_div{
+    position: absolute;
+    left: 20px;
+    bottom: 40px;
+    width: 80px;
+    height: 80px;
+    background-color: black;
+    border-radius: 50%;
+}
 #arrow{
     -webkit-filter: invert(1);
     filter: invert(1);
@@ -153,6 +169,7 @@ img{
             background-color: white;
             overflow-y:auto;
             display: none;
+            border-radius: 2% 0% 0% 2%;
             
         }
 
@@ -179,7 +196,10 @@ img{
 
         <div id = "static">
             <h1 id = "press_start"> PRESS ENTER </h1>
-            <svg id = "arrow" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M7.33 24l-2.83-2.829 9.339-9.175-9.339-9.167 2.83-2.829 12.17 11.996z"/></svg>
+            <div id = "sound_div">
+                <img src = "https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Speaker_Icon.svg/500px-Speaker_Icon.svg.png">
+            </div>
+                <svg id = "arrow" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M7.33 24l-2.83-2.829 9.339-9.175-9.339-9.167 2.83-2.829 12.17 11.996z"/></svg>
             <ul id = "options">
                 <li onmouseover="moveToAboutMe()"> ABOUT ME</li>
                 <br>
@@ -225,8 +245,10 @@ function sound(src) {
       this.sound.pause();
     }
   }
-
+//these are all my sound objects
 var sound_lights = new sound("switch-3.mp3");
+var sound_startup = new sound("fun_sound.wav");
+var sound_enter = new sound("enter.wav");
 
 //also gonna run just once to turn on light
 var lightson = (function() {
@@ -265,7 +287,12 @@ var dooropen = (function() {
         //now the text will display
         setTimeout(()=>{
             document.getElementById("gametext").style.animationPlayState = "running";
+            sound_startup.play();
         },2200)
+        //sound will play
+        setTimeout(()=>{
+            sound_startup.play();
+        },2900)
         //it will fade in
         setTimeout(()=>{
             document.getElementById("gametext").style.opacity = "1";
@@ -309,30 +336,35 @@ function cursorchange(){
     document.getElementById('door').style.cursor = "pointer";
 }
     var objImage= null;
-	    function init(){
+function init(){
 		    objImage=document.getElementById("arrow");				
 		    objImage.style.position='absolute';
 		    objImage.style.top='15px';
         }
 
-    //runs when option is hovered over
-    function moveToAboutMe(){
+    var cursor = document.getElementsByTagName('li');
+    //runs when option is hovered over also changes pointer
+function moveToAboutMe(){
         if(objImage.style.top != "15px"){
 		    objImage.style.top="15px";
         }
+        cursor[0].style.cursor = "pointer";
+        
 	}    
-    function moveToSkills(){
+function moveToSkills(){
         if(objImage.style.top != "50px"){
 		    objImage.style.top="50px";
         }
+        cursor[1].style.cursor = "pointer";
 	}    
-    function moveToAccomplishents(){
+function moveToAccomplishents(){
         if(objImage.style.top != "95px"){
 		    objImage.style.top="95px";
         }
+        cursor[2].style.cursor = "pointer";
 	}    
     //runs when up or down is pressed
-	function getKeyAndMove(e){				
+function getKeyAndMove(e){				
 		var key_code=e.which||e.keyCode;
 		switch(key_code){
 			case 38: //Up arrow key
@@ -344,12 +376,12 @@ function cursorchange(){
 		}
 	}
     //moves the cursor up or down with button presses
-	function moveUp(){
+function moveUp(){
         if(objImage.style.top != "15px"){
 		    objImage.style.top=parseInt(objImage.style.top)-40 +'px';
         }
 	}
-	function moveDown(){
+function moveDown(){
 		if(objImage.style.top != "95px"){
 		    objImage.style.top=parseInt(objImage.style.top)+40 +'px';
         }
@@ -365,6 +397,7 @@ function cursorchange(){
         document.getElementById("press_start").style.display = "none";
         document.getElementsByTagName('svg')[0].style.display = "block";
         document.getElementById('infoarea').style.display = "block";
+        sound_enter.play();
         }
     })
             
