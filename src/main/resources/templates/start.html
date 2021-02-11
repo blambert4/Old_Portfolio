@@ -173,15 +173,55 @@ img{
             
         }
 
-        #infoarea h1{
+#infoarea h1{
             text-align: left;
             font-size: 14px;
         }
-        #infoarea p{
+#infoarea p{
             text-align: left;
             font-size: 12px;
         }
-            
+#skillsarea {
+            width: 50%;
+            height: 70%;
+            position: absolute;
+            top: 40px;
+            right: 60px;
+            background-color: white;
+            overflow-y:auto;
+            display: none;
+            border-radius: 2% 0% 0% 2%;
+}
+
+#skillsarea h1{
+            text-align: left;
+            font-size: 14px;
+        }
+#skillsarea p{
+            text-align: left;
+            font-size: 12px;
+        }
+
+#hireme {
+            width: 50%;
+            height: 70%;
+            position: absolute;
+            top: 40px;
+            right: 60px;
+            background-color: white;
+            overflow-y:auto;
+            display: none;
+            border-radius: 2% 0% 0% 2%;
+}
+
+#hireme h1{
+            text-align: left;
+            font-size: 14px;
+        }
+#hireme p{
+            text-align: left;
+            font-size: 12px;
+        }
         </style>
     </head>
     <body>
@@ -201,11 +241,11 @@ img{
             </div>
                 <svg id = "arrow" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M7.33 24l-2.83-2.829 9.339-9.175-9.339-9.167 2.83-2.829 12.17 11.996z"/></svg>
             <ul id = "options">
-                <li onmouseover="moveToAboutMe()"> ABOUT ME</li>
+                <li onmouseover="moveToAboutMe()" onclick = "switchToAboutMe()"> lEARN ABOUT ME</li>
                 <br>
-                <li onmouseover="moveToSkills()"> SKILLS</li>
+                <li onmouseover="moveToSkills()" onclick = "switchToSkills()"> WHAT I KNOW</li>
                 <br>
-                <li onmouseover="moveToAccomplishents()"> ACCOMPLISHMENTS</li>
+                <li onmouseover="moveToAccomplishents()" onclick = "switchToHireMe()"> WHAT I BRING TO YOUR TEAM</li>
             </ul>
             <div id = "infoarea">
                 <h1> Name: Bradley Lambert</h1>
@@ -213,12 +253,49 @@ img{
                 <h1> Occupation: Chic Fil A Delivery Driver</h1>
                 <hr>
                 <h3> Why Programming?</h3>
-                <p>  I've always loved technology from an early age, however I never thought I could pursue a career in it. Although it fascinated me, it never occured to me that the computers and their programs were made by everyday people. I thought they were made by geniuses and so complex that i'd never learn anything of value. But I was wrong! </p>
                 <br>
-                <p> The first time i'd ever heard of computer programming was because i took a course in community college (completely by accident by the way). I didnt get it and I'm not even sure how I passed, but after that i decided it wasn't for me. However, Last year I stumbled upon a python and javascript course through EDX. I decided to give it a shot because the Covid-19 pandemic had started and I was bored. It was free but i loved it so much i purchased the extended version. I stayed up late nights and early mornings to learn and develop my skills. I started making simple websites on my local machine until the python portion made more sense and i learned how to use the MVC Django </p>
+                <p> Well, Last year someone posted that EDX was offering free courses during the pandemic. I decided to give it a shot because the Covid-19 pandemic had started and I was tired doing the same things over and over. Literally the first thing i saw on the website was a Harvard python and javascript course and that was that. I started stayed up late nights and early mornings, even skipping videogame time to continue learning. I was going through the ups and downs of being new at programming, mastering certain concepts faster than others. It was challenging yet rewarding, which i absolutely fell in love with. Finally i was able to use my inability to quit and love for learning for a better purpose than i was</p>
                 <br>
-                <h3> inspiration </h3>
+                <h3> My Inspiration </h3>
                 <p> I'm sure you can tell by looking at this website that I was heavily inspired by some of my favorite videogames and game systems from my childhood. The first thing i ever wanted to do on my school computer was navigate to an unblocked gaming website and mess around when the teacher wasn't looking! One day i hope to create my own game or maybe contribute to a larger one. </p>
+                <br>
+                <h3> What i do in my free time</h3>
+                <p> I have baby boy coming in late april that i'm absolutely excited for. I have a huge family here in Atlanta and i love to spend time with them whenever i can. I love to play videogames (obviously), exercise, as well as play basketball. I'm pretty busy lately with a lot on my plate, so now i spend most of my time coding with the focus on game development.  
+                </p>
+            </div>
+            <div id = "skillsarea">
+                <h1> Name: Bradley Lambert</h1>
+                <h1> University: CSU Dominguez Hills- class of 2018</h1>
+                <h1> Occupation: Chic Fil A Delivery Driver</h1>
+                <hr>
+                <h3> Object Oriented Languages</h3>
+                <ul>
+                    <li> Python: familiar with DJango and PYgame</li>
+                    <li> Java: familiar with SPRINGBOOT and and swing gui </li>
+                    <li> javascript: familiar with game design principles</li>
+                </ul>
+                <h3> Markup Languages</h3>
+                <ul>
+                    <li> html5 </li>
+                    <li> css3</li>
+                    <li> xml </li>
+                </ul>
+                <h3> Database Management</h3>
+                <ul>
+                    <li> mySQL </li>
+                </ul>
+            </div>
+            <div id= "hireme">
+                <h1> Name: Bradley Lambert</h1>
+                <h1> University: CSU Dominguez Hills- class of 2018</h1>
+                <h1> Occupation: Chic Fil A Delivery Driver</h1>
+                <hr>
+                <h3> What separates me </h3>
+                <p> If you've ever been to Chic Fil A, or even heard of us, you know that we pride ourselves on two things; Customer Service and Communication. I'm great at conveying a message to others around me in the quickest and most professional way possible. Its what i do everyday and my team appreciates that about me.</p>
+                <h3> temperment </h3>
+                <p> I've been told I'm confident, humble and courteous. If something needs to be said I'm the type guy who will say it. If a decision needs to be made i'm the type of guy that will make it. When i am wrong i admit that i was wrong and when I'm being criticized i dont take it personally. I'm always honest with myself, my team, and my customers.</p>
+                <h3> How i think</h3>
+                <p> I professional setting, i like to stick to what i am best at. I believe if we're all put in a position to do what we excel at, it makes out team run much better. I do think its important to work on your weak skills and try new things when you can, just not at the expense of the customer or your team. </p>
             </div>
             <img class = "static" src = "https://wallpaperaccess.com/full/42337.jpg">
         </div>
@@ -305,17 +382,17 @@ var dooropen = (function() {
         setTimeout(()=>{
             document.getElementById("gametext").style.display = "none";
         },5000)
-        //make static fade in 
+        //make background fade in 
         setTimeout(()=>{
             document.getElementById("static").style.display = "block";
             document.getElementById("static").style.animationPlayState = "running";
-        },6000)
+        },5600)
         //make static stay
         setTimeout(()=>{
             document.getElementById("static").style.display = "block";
             document.getElementById("static").style.opacity = "1";
            
-        },6000)
+        },5600)
 
         executed = true;
     }
@@ -387,8 +464,22 @@ function moveDown(){
         }
 	}
 
+function switchToSkills(){
+    document.getElementById('infoarea').style.display = "none";
+    document.getElementById('skillsarea').style.display = "block";
+    document.getElementById('hireme').style.display = "none";
+}
+function switchToAboutMe(){
+    document.getElementById('infoarea').style.display = "block";
+    document.getElementById('skillsarea').style.display = "none";
+    document.getElementById('hireme').style.display = "none";
+}
+function switchToHireMe(){
+    document.getElementById('hireme').style.display = "block";
+    document.getElementById('infoarea').style.display = "none";
+    document.getElementById('skillsarea').style.display = "none";
 
-
+}  
     document.onkeydown = getKeyAndMove;
     //this opens up the menu options
     document.addEventListener('keyup', event => {
