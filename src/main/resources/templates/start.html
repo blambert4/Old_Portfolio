@@ -135,8 +135,8 @@ img{
     display: none;
 }
 #sound_div img{
-    width: 30px;
-    height: 30px;
+    width: 60px;
+    height: 60px;
     -webkit-filter: invert(1);
     filter: invert(1);
     display: inline-block;
@@ -169,8 +169,8 @@ img{
             background-color: white;
             overflow-y:auto;
             display: none;
-            border-radius: 2% 0% 0% 2%;
-            
+            padding-left: 10px;
+            border: solid black 3px;
         }
 
 #infoarea h1{
@@ -190,7 +190,8 @@ img{
             background-color: white;
             overflow-y:auto;
             display: none;
-            border-radius: 2% 0% 0% 2%;
+            padding-left: 10px;
+            border: solid black 3px;
 }
 
 #skillsarea h1{
@@ -211,7 +212,8 @@ img{
             background-color: white;
             overflow-y:auto;
             display: none;
-            border-radius: 2% 0% 0% 2%;
+            padding-left: 10px;
+            border: solid black 3px;
 }
 
 #hireme h1{
@@ -237,7 +239,7 @@ img{
         <div id = "static">
             <h1 id = "press_start"> PRESS ENTER </h1>
             <div id = "sound_div">
-                <img src = "https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Speaker_Icon.svg/500px-Speaker_Icon.svg.png">
+                <img onclick = "togglemusic()" id = "ok" src = "https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Speaker_Icon.svg/500px-Speaker_Icon.svg.png">
             </div>
                 <svg id = "arrow" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M7.33 24l-2.83-2.829 9.339-9.175-9.339-9.167 2.83-2.829 12.17 11.996z"/></svg>
             <ul id = "options">
@@ -269,18 +271,21 @@ img{
                 <h1> Occupation: Chic Fil A Delivery Driver</h1>
                 <hr>
                 <h3> Object Oriented Languages</h3>
+                <br>
                 <ul>
                     <li> Python: familiar with DJango and PYgame</li>
                     <li> Java: familiar with SPRINGBOOT and and swing gui </li>
                     <li> javascript: familiar with game design principles</li>
                 </ul>
                 <h3> Markup Languages</h3>
+                <br>
                 <ul>
                     <li> html5 </li>
                     <li> css3</li>
                     <li> xml </li>
                 </ul>
                 <h3> Database Management</h3>
+                <br>
                 <ul>
                     <li> mySQL </li>
                 </ul>
@@ -291,10 +296,13 @@ img{
                 <h1> Occupation: Chic Fil A Delivery Driver</h1>
                 <hr>
                 <h3> What separates me </h3>
+                <br>
                 <p> If you've ever been to Chic Fil A, or even heard of us, you know that we pride ourselves on two things; Customer Service and Communication. I'm great at conveying a message to others around me in the quickest and most professional way possible. Its what i do everyday and my team appreciates that about me.</p>
-                <h3> temperment </h3>
-                <p> I've been told I'm confident, humble and courteous. If something needs to be said I'm the type guy who will say it. If a decision needs to be made i'm the type of guy that will make it. When i am wrong i admit that i was wrong and when I'm being criticized i dont take it personally. I'm always honest with myself, my team, and my customers.</p>
+                <h3> Soft skills </h3>
+                <br>
+                 <p>I'm confident, humble and courteous. If action needs to be taken, I'm the type of guy who likes to take it. I'm never too proud to admit that i was wrong or that i could have done something better with more knowledge. I don't take critisicm of my work personally, i view it as an opportunity to see from a different perspective.</p>
                 <h3> How i think</h3>
+                <br>
                 <p> I professional setting, i like to stick to what i am best at. I believe if we're all put in a position to do what we excel at, it makes out team run much better. I do think its important to work on your weak skills and try new things when you can, just not at the expense of the customer or your team. </p>
             </div>
             <img class = "static" src = "https://wallpaperaccess.com/full/42337.jpg">
@@ -326,6 +334,9 @@ function sound(src) {
 var sound_lights = new sound("switch-3.mp3");
 var sound_startup = new sound("fun_sound.wav");
 var sound_enter = new sound("enter.wav");
+var sound_beat = new sound("beat.mp3");
+document.getElementsByTagName('audio')[4].loop = true;
+
 
 //also gonna run just once to turn on light
 var lightson = (function() {
@@ -386,6 +397,7 @@ var dooropen = (function() {
         setTimeout(()=>{
             document.getElementById("static").style.display = "block";
             document.getElementById("static").style.animationPlayState = "running";
+            sound_beat.play();
         },5600)
         //make static stay
         setTimeout(()=>{
@@ -412,18 +424,20 @@ document.getElementById('light').style.cursor = "default"
 function cursorchange(){
     document.getElementById('door').style.cursor = "pointer";
 }
-    var objImage= null;
+var objImage= null;
 function init(){
 		    objImage=document.getElementById("arrow");				
 		    objImage.style.position='absolute';
 		    objImage.style.top='15px';
+            sound_beat.loop = true;
         }
 
-    var cursor = document.getElementsByTagName('li');
+var cursor = document.getElementsByTagName('li');
     //runs when option is hovered over also changes pointer
 function moveToAboutMe(){
         if(objImage.style.top != "15px"){
 		    objImage.style.top="15px";
+            
         }
         cursor[0].style.cursor = "pointer";
         
@@ -468,19 +482,35 @@ function switchToSkills(){
     document.getElementById('infoarea').style.display = "none";
     document.getElementById('skillsarea').style.display = "block";
     document.getElementById('hireme').style.display = "none";
+    sound_enter.play();
 }
 function switchToAboutMe(){
     document.getElementById('infoarea').style.display = "block";
     document.getElementById('skillsarea').style.display = "none";
     document.getElementById('hireme').style.display = "none";
+    sound_enter.play();
 }
 function switchToHireMe(){
     document.getElementById('hireme').style.display = "block";
     document.getElementById('infoarea').style.display = "none";
     document.getElementById('skillsarea').style.display = "none";
-
+    sound_enter.play();
 }  
-    document.onkeydown = getKeyAndMove;
+var playing = true;
+function togglemusic(){
+    if (playing == true){
+        sound_beat.stop();
+        playing = false;
+        document.getElementById('ok').src = "https://cdn2.iconfinder.com/data/icons/basic-3/1024/mute-512.png";
+    }
+    else{
+        sound_beat.play();
+        playing = true;
+        document.getElementById('ok').src = "https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Speaker_Icon.svg/500px-Speaker_Icon.svg.png";
+    }
+}
+
+document.onkeydown = getKeyAndMove;
     //this opens up the menu options
     document.addEventListener('keyup', event => {
     if (event.code === 'Enter') {
