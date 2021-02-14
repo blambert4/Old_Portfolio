@@ -134,22 +134,29 @@ img{
     list-style-type: none;
     display: none;
 }
-#sound_div img{
+#options li:hover{
+    cursor: pointer;
+}
+#links{
+    color: white;
+    list-style-type: none;
+    display: none;
+    position: relative;
+    left: 240px;
+}
+#links li:hover{
+    cursor: pointer;
+}
+
+#ok{
     width: 60px;
     height: 60px;
     -webkit-filter: invert(1);
     filter: invert(1);
     display: inline-block;
-    
-}
-#sound_div{
     position: absolute;
-    left: 20px;
-    bottom: 40px;
-    width: 80px;
-    height: 80px;
-    background-color: black;
-    border-radius: 50%;
+    left: 40px;
+    top: 90%;   
 }
 #arrow{
     -webkit-filter: invert(1);
@@ -159,7 +166,11 @@ img{
     left: 10px;
     display: none;
 }
-
+#profile{
+    position: absolute;
+    top: 10px;
+    left: 600px;
+}
 #infoarea{
             width: 50%;
             height: 70%;
@@ -224,6 +235,11 @@ img{
             text-align: left;
             font-size: 12px;
         }
+a{
+    color: white;
+    text-decoration: none;
+}
+
         </style>
     </head>
     <body>
@@ -238,9 +254,9 @@ img{
 
         <div id = "static">
             <h1 id = "press_start"> PRESS ENTER </h1>
-            <div id = "sound_div">
+            
                 <img onclick = "togglemusic()" id = "ok" src = "https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Speaker_Icon.svg/500px-Speaker_Icon.svg.png">
-            </div>
+            
                 <svg id = "arrow" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M7.33 24l-2.83-2.829 9.339-9.175-9.339-9.167 2.83-2.829 12.17 11.996z"/></svg>
             <ul id = "options">
                 <li onmouseover="moveToAboutMe()" onclick = "switchToAboutMe()"> lEARN ABOUT ME</li>
@@ -249,10 +265,19 @@ img{
                 <br>
                 <li onmouseover="moveToAccomplishents()" onclick = "switchToHireMe()"> WHAT I BRING TO YOUR TEAM</li>
             </ul>
+            <br>
+            <ul id = "links"> 
+                <li onmouseover = "moveToProjects()"> <a href = "#"> OLD PROJECTS </a></li>
+                <br>
+                <li onmouseover = "moveToGithub()"> <a href = "#"> GITHUB</a></li>
+                <br>
+                <li onmouseover = "moveToLinkedIn()"><a href ="#"> LINKEDIN </a></li>
+            </ul>
             <div id = "infoarea">
                 <h1> Name: Bradley Lambert</h1>
                 <h1> University: CSU Dominguez Hills- class of 2018</h1>
                 <h1> Occupation: Chic Fil A Delivery Driver</h1>
+                <img id = "profile" src = "https://media-exp1.licdn.com/dms/image/C5603AQEhiD8aquHlew/profile-displayphoto-shrink_200_200/0/1599687583797?e=1618444800&v=beta&t=aZ4TgDMyXTonQCh72KcltrWW3VA0XFPV0uAYVSHWvY0">
                 <hr>
                 <h3> Why Programming?</h3>
                 <br>
@@ -269,6 +294,7 @@ img{
                 <h1> Name: Bradley Lambert</h1>
                 <h1> University: CSU Dominguez Hills- class of 2018</h1>
                 <h1> Occupation: Chic Fil A Delivery Driver</h1>
+                <img id = "profile" src = "https://media-exp1.licdn.com/dms/image/C5603AQEhiD8aquHlew/profile-displayphoto-shrink_200_200/0/1599687583797?e=1618444800&v=beta&t=aZ4TgDMyXTonQCh72KcltrWW3VA0XFPV0uAYVSHWvY0">
                 <hr>
                 <h3> Object Oriented Languages</h3>
                 <br>
@@ -294,6 +320,7 @@ img{
                 <h1> Name: Bradley Lambert</h1>
                 <h1> University: CSU Dominguez Hills- class of 2018</h1>
                 <h1> Occupation: Chic Fil A Delivery Driver</h1>
+                <img id = "profile" src = "https://media-exp1.licdn.com/dms/image/C5603AQEhiD8aquHlew/profile-displayphoto-shrink_200_200/0/1599687583797?e=1618444800&v=beta&t=aZ4TgDMyXTonQCh72KcltrWW3VA0XFPV0uAYVSHWvY0">
                 <hr>
                 <h3> What separates me </h3>
                 <br>
@@ -432,51 +459,46 @@ function init(){
             sound_beat.loop = true;
         }
 
-var cursor = document.getElementsByTagName('li');
+
     //runs when option is hovered over also changes pointer
 function moveToAboutMe(){
         if(objImage.style.top != "15px"){
 		    objImage.style.top="15px";
-            
+            objImage.style.left =  "0px"
         }
-        cursor[0].style.cursor = "pointer";
         
 	}    
 function moveToSkills(){
         if(objImage.style.top != "50px"){
 		    objImage.style.top="50px";
+            objImage.style.left =  "0px"
         }
-        cursor[1].style.cursor = "pointer";
 	}    
 function moveToAccomplishents(){
         if(objImage.style.top != "95px"){
 		    objImage.style.top="95px";
+            objImage.style.left =  "0px"
         }
-        cursor[2].style.cursor = "pointer";
 	}    
-    //runs when up or down is pressed
-function getKeyAndMove(e){				
-		var key_code=e.which||e.keyCode;
-		switch(key_code){
-			case 38: //Up arrow key
-				moveUp();
-				break;
-			case 40: //down arrow key
-				moveDown();
-				break;						
-		}
-	}
+function moveToProjects(){
+    if(objImage.style.top != "142px"){
+		    objImage.style.top="142px";
+            objImage.style.left =  "245px";
+        }
+}
+function moveToGithub(){
+    if(objImage.style.top != "182px"){
+		    objImage.style.top="182px";
+            objImage.style.left =  "245px";
+        }
+}
+function moveToLinkedIn(){
+    if(objImage.style.top != "222px"){
+		    objImage.style.top="222px";
+            objImage.style.left =  "245px";
+        }
+}
     //moves the cursor up or down with button presses
-function moveUp(){
-        if(objImage.style.top != "15px"){
-		    objImage.style.top=parseInt(objImage.style.top)-40 +'px';
-        }
-	}
-function moveDown(){
-		if(objImage.style.top != "95px"){
-		    objImage.style.top=parseInt(objImage.style.top)+40 +'px';
-        }
-	}
 
 function switchToSkills(){
     document.getElementById('infoarea').style.display = "none";
@@ -510,14 +532,14 @@ function togglemusic(){
     }
 }
 
-document.onkeydown = getKeyAndMove;
     //this opens up the menu options
     document.addEventListener('keyup', event => {
     if (event.code === 'Enter') {
-        document.getElementById("options").style.display = "block";
+        document.getElementById("options").style.display = "inline-block";
+        document.getElementById("links").style.display = "inline-block";
         document.getElementById("press_start").style.display = "none";
-        document.getElementsByTagName('svg')[0].style.display = "block";
-        document.getElementById('infoarea').style.display = "block";
+        document.getElementsByTagName('svg')[0].style.display = "inline-block";
+        document.getElementById('infoarea').style.display = "inline-block";
         sound_enter.play();
         }
     })
