@@ -128,7 +128,14 @@ img{
                 4px 0 0 #4405fc, ;
    
 }    
-
+#block{
+    width: 80px;
+    height: 80px;
+    border: solid white;
+    position: absolute;
+    left: 20px;
+    bottom: 20px;
+}
 #options{
     color: white;
     list-style-type: none;
@@ -156,7 +163,10 @@ img{
     display: inline-block;
     position: absolute;
     left: 40px;
-    top: 90%;   
+    top: 85%;   
+}
+#ok:hover{
+    cursor: pointer;
 }
 #arrow{
     -webkit-filter: invert(1);
@@ -170,6 +180,36 @@ img{
     position: absolute;
     top: 10px;
     left: 600px;
+    border:solid 2px;
+}
+#toggle{
+    display: inline-block;
+    align-items: center;
+    text-align: left;
+    position: absolute;
+    left: 40px;
+    bottom: 40px;
+}
+#toggle p{
+    color: white;
+    display: inline-block;
+}
+
+#on{
+    background-color: black;
+    color: white;
+}
+#off{
+    background-color: grey;
+    color: black;
+}
+
+
+#profile:hover{
+    left: 300px;
+    width: 200px;
+    height: 200px;
+    border: solid;
 }
 #infoarea{
             width: 50%;
@@ -240,6 +280,9 @@ a{
     text-decoration: none;
 }
 
+
+
+
         </style>
     </head>
     <body>
@@ -254,9 +297,12 @@ a{
 
         <div id = "static">
             <h1 id = "press_start"> PRESS ENTER </h1>
-            
-                <img onclick = "togglemusic()" id = "ok" src = "https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Speaker_Icon.svg/500px-Speaker_Icon.svg.png">
-            
+                <div id = "toggle">
+                    <p> Music </p>
+                    <button id = "on" onclick = "music_on()"> on </button>
+                    <button id = "off" onclick = "music_off()"> off</button>
+                </div>
+                         
                 <svg id = "arrow" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M7.33 24l-2.83-2.829 9.339-9.175-9.339-9.167 2.83-2.829 12.17 11.996z"/></svg>
             <ul id = "options">
                 <li onmouseover="moveToAboutMe()" onclick = "switchToAboutMe()"> lEARN ABOUT ME</li>
@@ -267,21 +313,22 @@ a{
             </ul>
             <br>
             <ul id = "links"> 
-                <li onmouseover = "moveToProjects()"> <a href = "#"> OLD PROJECTS </a></li>
+                <li onmouseover = "moveToLinkedIn()"  onclick="play_sound()"><a href ="https://www.linkedin.com/in/bradley-lambert-81100914b/" target = "_blank"> LINKEDIN </a></li>
                 <br>
-                <li onmouseover = "moveToGithub()"> <a href = "#"> GITHUB</a></li>
+                <li onmouseover = "moveToProjects()" onclick="play_sound()"> <a href = "https://mygreatnyro.herokuapp.com/home/" target = "_blank"> OLD PROJECTS </a></li>
                 <br>
-                <li onmouseover = "moveToLinkedIn()"><a href ="#"> LINKEDIN </a></li>
+                <li onmouseover = "moveToGithub()"  onclick="play_sound()"> <a href = "https://github.com/blambert4/my-platform" target = "_blank"> GITHUB</a></li>
+                
             </ul>
             <div id = "infoarea">
                 <h1> Name: Bradley Lambert</h1>
                 <h1> University: CSU Dominguez Hills- class of 2018</h1>
-                <h1> Occupation: Chic Fil A Delivery Driver</h1>
+                <h1> Occupation: Chick Fil A Delivery Driver</h1>
                 <img id = "profile" src = "https://media-exp1.licdn.com/dms/image/C5603AQEhiD8aquHlew/profile-displayphoto-shrink_200_200/0/1599687583797?e=1618444800&v=beta&t=aZ4TgDMyXTonQCh72KcltrWW3VA0XFPV0uAYVSHWvY0">
                 <hr>
                 <h3> Why Programming?</h3>
                 <br>
-                <p> Well, Last year someone posted that EDX was offering free courses during the pandemic. I decided to give it a shot because the Covid-19 pandemic had started and I was tired doing the same things over and over. Literally the first thing i saw on the website was a Harvard python and javascript course and that was that. I started stayed up late nights and early mornings, even skipping videogame time to continue learning. I was going through the ups and downs of being new at programming, mastering certain concepts faster than others. It was challenging yet rewarding, which i absolutely fell in love with. Finally i was able to use my inability to quit and love for learning for a better purpose than i was</p>
+                <p> Well, Last year someone posted that EDX was offering free courses during the pandemic. I decided to give it a shot because the Covid-19 pandemic had started and I was tired doing the same things over and over. Literally the first thing i saw on the website was a Harvard python and javascript course and that was that. I started stayed up late nights and early mornings, even skipping videogame time to continue learning. I was going through the ups and downs of being new at programming, mastering certain concepts faster than others. It was challenging yet rewarding, which i absolutely fell in love with. Finally i was able to use my perserverance and love for learning for a better purpose.</p>
                 <br>
                 <h3> My Inspiration </h3>
                 <p> I'm sure you can tell by looking at this website that I was heavily inspired by some of my favorite videogames and game systems from my childhood. The first thing i ever wanted to do on my school computer was navigate to an unblocked gaming website and mess around when the teacher wasn't looking! One day i hope to create my own game or maybe contribute to a larger one. </p>
@@ -293,7 +340,7 @@ a{
             <div id = "skillsarea">
                 <h1> Name: Bradley Lambert</h1>
                 <h1> University: CSU Dominguez Hills- class of 2018</h1>
-                <h1> Occupation: Chic Fil A Delivery Driver</h1>
+                <h1> Occupation: Chick Fil A Delivery Driver</h1>
                 <img id = "profile" src = "https://media-exp1.licdn.com/dms/image/C5603AQEhiD8aquHlew/profile-displayphoto-shrink_200_200/0/1599687583797?e=1618444800&v=beta&t=aZ4TgDMyXTonQCh72KcltrWW3VA0XFPV0uAYVSHWvY0">
                 <hr>
                 <h3> Object Oriented Languages</h3>
@@ -319,12 +366,12 @@ a{
             <div id= "hireme">
                 <h1> Name: Bradley Lambert</h1>
                 <h1> University: CSU Dominguez Hills- class of 2018</h1>
-                <h1> Occupation: Chic Fil A Delivery Driver</h1>
+                <h1> Occupation: Chick Fil A Delivery Driver</h1>
                 <img id = "profile" src = "https://media-exp1.licdn.com/dms/image/C5603AQEhiD8aquHlew/profile-displayphoto-shrink_200_200/0/1599687583797?e=1618444800&v=beta&t=aZ4TgDMyXTonQCh72KcltrWW3VA0XFPV0uAYVSHWvY0">
                 <hr>
                 <h3> What separates me </h3>
                 <br>
-                <p> If you've ever been to Chic Fil A, or even heard of us, you know that we pride ourselves on two things; Customer Service and Communication. I'm great at conveying a message to others around me in the quickest and most professional way possible. Its what i do everyday and my team appreciates that about me.</p>
+                <p> If you've ever been to Chick Fil A, or even heard of us, you know that we pride ourselves on two things; Customer Service and Communication. I'm great at conveying a message to others around me in the quickest and most professional way possible. Its what i do everyday and my team appreciates that about me.</p>
                 <h3> Soft skills </h3>
                 <br>
                  <p>I'm confident, humble and courteous. If action needs to be taken, I'm the type of guy who likes to take it. I'm never too proud to admit that i was wrong or that i could have done something better with more knowledge. I don't take critisicm of my work personally, i view it as an opportunity to see from a different perspective.</p>
@@ -364,7 +411,10 @@ var sound_enter = new sound("enter.wav");
 var sound_beat = new sound("beat.mp3");
 document.getElementsByTagName('audio')[4].loop = true;
 
-
+function play_sound(){
+    sound_enter.play();
+    music_off();
+}
 //also gonna run just once to turn on light
 var lightson = (function() {
     var executed = false;
@@ -480,19 +530,19 @@ function moveToAccomplishents(){
             objImage.style.left =  "0px"
         }
 	}    
-function moveToProjects(){
+function moveToLinkedIn(){
     if(objImage.style.top != "142px"){
 		    objImage.style.top="142px";
             objImage.style.left =  "245px";
         }
 }
-function moveToGithub(){
+function moveToProjects(){
     if(objImage.style.top != "182px"){
 		    objImage.style.top="182px";
             objImage.style.left =  "245px";
         }
 }
-function moveToLinkedIn(){
+function moveToGithub(){
     if(objImage.style.top != "222px"){
 		    objImage.style.top="222px";
             objImage.style.left =  "245px";
@@ -518,19 +568,24 @@ function switchToHireMe(){
     document.getElementById('skillsarea').style.display = "none";
     sound_enter.play();
 }  
-var playing = true;
-function togglemusic(){
-    if (playing == true){
+var off = document.getElementById('off');
+var on = document.getElementById('on');
+function music_off(){
         sound_beat.stop();
-        playing = false;
-        document.getElementById('ok').src = "https://cdn2.iconfinder.com/data/icons/basic-3/1024/mute-512.png";
+        off.style.backgroundColor = "black";
+        off.style.color = "white";
+        on.style.backgroundColor = "grey";
+        on.style.color = "black";
+        
     }
-    else{
+function music_on(){
         sound_beat.play();
-        playing = true;
-        document.getElementById('ok').src = "https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Speaker_Icon.svg/500px-Speaker_Icon.svg.png";
+        off.style.backgroundColor = "grey";
+        off.style.color = "black";
+        on.style.backgroundColor = "black";
+        on.style.color = "white";
     }
-}
+
 
     //this opens up the menu options
     document.addEventListener('keyup', event => {
